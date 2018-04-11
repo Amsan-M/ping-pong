@@ -3,6 +3,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
+
 export default class Game {
   constructor(element, width, height) {
     this.element = element;
@@ -10,10 +11,24 @@ export default class Game {
     this.height = height;
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
-    this.paddle = new Paddle(this.paddleWidth, this.paddleHeight, this.boardHeight, this.speed, this.score, this.x, this.y,this.width, this.height );
-    this.ball = new Ball(this.radius, this.direction, this.boardHeight, this.boardWidth);
-    // this.paddle1 = new Paddle(this.height, this.paddleWidth, this.paddleHeight,10,100)
-    // this.paddle2 = new Paddle(this.height, this.paddleWidth, this.paddleHeight,494,100)
+    this.paddle = new Paddle(
+      this.paddleWidth,
+      this.paddleHeight,
+      this.boardHeight,
+      this.speed,
+      this.score,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+    this.ball = new Ball(
+      this.radius,
+      this.direction,
+      this.boardHeight,
+      this.boardWidth
+    );
+
     // Other code goes here...
   }
 
