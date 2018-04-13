@@ -36,6 +36,11 @@ export default class Game {
       this.height
     );
 
+    this.ball2 = new Ball(RADIUS,
+      this.width,
+      this.height
+    );
+
     this.score1 = new Score(this.width / 2 -50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
@@ -61,6 +66,7 @@ export default class Game {
     this.paddle.render(svg);
     this.paddle2.render(svg);
     this.ball.render(svg, this.paddle, this.paddle2);
+    this.ball2.render(svg, this.paddle, this.paddle2);
     this.score1.render(svg, this.paddle.getScore());
     this.score2.render(svg, this.paddle2.getScore());
   }

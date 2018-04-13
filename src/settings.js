@@ -15,6 +15,5 @@ export const PADDLESPEED = 10;
 export const RADIUS = 8;
 
 
-// 
 
 
