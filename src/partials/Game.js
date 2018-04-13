@@ -36,10 +36,17 @@ export default class Game {
       this.height
     );
 
-    this.ball2 = new Ball(RADIUS,
-      this.width,
-      this.height
-    );
+
+    //-------------------------------------------------- 
+
+    // second ball uncomment the lines below
+
+    // this.ball2 = new Ball(RADIUS,
+    //   this.width,
+    //   this.height
+    // );
+    // ----------------------------------------------------
+
 
     this.score1 = new Score(this.width / 2 -50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
@@ -53,9 +60,11 @@ export default class Game {
   }
 
   render() {
+
     if(this.pause){
       return;
     }
+
     this.gameElement.innerHTML = ' ';
     let svg = document.createElementNS(SVG_NS, 'svg');
     svg.setAttributeNS(null, 'width', this.width);
@@ -66,8 +75,13 @@ export default class Game {
     this.paddle.render(svg);
     this.paddle2.render(svg);
     this.ball.render(svg, this.paddle, this.paddle2);
-    this.ball2.render(svg, this.paddle, this.paddle2);
+    
+    // -----------------------------------------------------------------------------------
+    // ball 2 uncomment the line below
+    // this.ball2.render(svg, this.paddle, this.paddle2);
+    // ------------------------------------------------------------------------------------------------------
     this.score1.render(svg, this.paddle.getScore());
     this.score2.render(svg, this.paddle2.getScore());
+
   }
 }
