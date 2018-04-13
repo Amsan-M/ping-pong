@@ -6,6 +6,7 @@ const build = resolve(__dirname, 'build');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
+	devtool: 'source-map',
 	entry: {
 		app: './src/index.js',
 	},

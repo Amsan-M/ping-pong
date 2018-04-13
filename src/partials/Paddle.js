@@ -1,35 +1,70 @@
-import { SVG_NS } from '../settings.js';
+import { SVG_NS, PADDLESPEED } from '../settings.js';
 
 export default class Paddle {
-  constructor(boardHeight, width, height, x, y) {
+  constructor(boardHeight, width, height, x, y, up, down) {
     this.boardHeight = boardHeight;
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = PADDLESPEED;
     this.score = 0;
-  }
-  //...
 
-  render(svg) {
+    document.addEventListener("keydown", event => {
+      switch (event.key) {
+        case up:
+          this.up();
+          break;
+        case down:
+          this.down();
+          break;
+      }
+    });
+  }
+
+  getScore(){
+    return this.score;
+  }
+  incrementScore (){
+    this.score = this.score +1;
+  }
+
+  up() {
+    this.y = Math.max(0, this.y - this.speed);
+  }
+
+  down() {
+    this.y = Math.min(this.boardHeight, this.y + this.speed);
+  }
+  
+  
+   coordinates(){
+     let leftX = this.x;
+     let rightX = this.x + this.width;
+     let topY = this.y;
+     let bottomY = this.y + this.height;
+     return [leftX, rightX, topY, bottomY];
+   }
+  
+  
+  render (svg) {
     let paddle = document.createElementNS(SVG_NS, 'rect');
-    paddle.setAttributeNS(null, 'x', 20);
-    paddle.setAttributeNS(null, 'y', 10);
-    paddle.setAttributeNS(null, 'width', 8);
-    paddle.setAttributeNS(null, 'height', 56);
+    paddle.setAttributeNS(null, 'x', this.x);
+    paddle.setAttributeNS(null, 'y', this.y);
+    paddle.setAttributeNS(null, 'width', this.width);
+    paddle.setAttributeNS(null, 'height', this.height);
     paddle.setAttributeNS(null, 'fill', 'white');
-
-    let paddle2 = document.createElementNS(SVG_NS, 'rect');
-    paddle2.setAttributeNS(null, 'x', 492);
-    paddle2.setAttributeNS(null, 'y', 10);
-    paddle2.setAttributeNS(null, 'width', 8);
-    paddle2.setAttributeNS(null, 'height', 56);
-    paddle2.setAttributeNS(null, 'fill', 'white');
-
+    paddle.setAttributeNS(null, 'boardGap','');
+    paddle.setAttribute(null, 'up', this.up);
+    paddle.setAttribute(null, 'down', this.down);
     
-
     svg.appendChild(paddle);
-    svg.appendChild(paddle2);
+    
+    
+    
+    
+    
+    
   }
+  
 }
