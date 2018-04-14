@@ -1,4 +1,4 @@
-import { SVG_NS, PADDLESPEED } from '../settings.js';
+import { SVG_NS, PADDLESPEED } from "../settings.js";
 
 export default class Paddle {
   constructor(boardHeight, width, height, x, y, up, down) {
@@ -22,11 +22,11 @@ export default class Paddle {
     });
   }
 
-  getScore(){
+  getScore() {
     return this.score;
   }
-  incrementScore (){
-    this.score = this.score +1;
+  incrementScore() {
+    this.score = this.score + 1;
   }
 
   up() {
@@ -34,37 +34,25 @@ export default class Paddle {
   }
 
   down() {
-    this.y = Math.min(this.boardHeight, this.y + this.speed);
+    this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
   }
-  
-  
-   coordinates(){
-     let leftX = this.x;
-     let rightX = this.x + this.width;
-     let topY = this.y;
-     let bottomY = this.y + this.height;
-     return [leftX, rightX, topY, bottomY];
-   }
-  
-  
-  render (svg) {
-    let paddle = document.createElementNS(SVG_NS, 'rect');
-    paddle.setAttributeNS(null, 'x', this.x);
-    paddle.setAttributeNS(null, 'y', this.y);
-    paddle.setAttributeNS(null, 'width', this.width);
-    paddle.setAttributeNS(null, 'height', this.height);
-    paddle.setAttributeNS(null, 'fill', 'white');
-    paddle.setAttributeNS(null, 'boardGap','');
-    paddle.setAttribute(null, 'up', this.up);
-    paddle.setAttribute(null, 'down', this.down);
-    
+
+  coordinates() {
+    let leftX = this.x;
+    let rightX = this.x + this.width;
+    let topY = this.y;
+    let bottomY = this.y + this.height;
+    return [leftX, rightX, topY, bottomY];
+  }
+
+  render(svg) {
+    let paddle = document.createElementNS(SVG_NS, "rect");
+    paddle.setAttributeNS(null, "x", this.x);
+    paddle.setAttributeNS(null, "y", this.y);
+    paddle.setAttributeNS(null, "width", this.width);
+    paddle.setAttributeNS(null, "height", this.height);
+    paddle.setAttributeNS(null, "fill", "white");
+
     svg.appendChild(paddle);
-    
-    
-    
-    
-    
-    
   }
-  
 }
