@@ -44,8 +44,29 @@ export default class Game {
       KEYS.p2down
     );
 
+    this.paddle3 = new Paddle(
+      this.height,
+      (this.paddleWidth),
+      (this.paddleHeight * 2),
+      this.boardGap,
+      (this.height - this.paddleHeight) / 2,
+      KEYS.p1up,
+      KEYS.p1down
+    );
+
+    this.paddle4 = new Paddle(
+      this.height,
+      this.paddleWidth,
+      (this.paddleHeight * 2),
+      this.width - this.boardGap - this.paddleWidth,
+      (this.height - this.paddleHeight) / 2,
+      KEYS.p2up,
+      KEYS.p2down
+    );
+
     this.ball = new Ball(RADIUS, this.width, this.height);
-    this.ball2 = new Ball(RADIUS, this.width, this.height);
+    this.ball2 = new Ball(RADIUS * 2, this.width, this.height);
+    this.ball3 = new Ball(RADIUS * 3, this.width, this.height);
 
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
@@ -58,10 +79,10 @@ export default class Game {
   }
 
   scoreBoard(svg) {
-    if (this.paddle.getScore() === 10) {
+    if (this.paddle.getScore() === 15) {
       this.pause = true;
       this.score1.render(svg, "Player 1 Wins");
-    } else if (this.paddle2.getScore() === 10) {
+    } else if (this.paddle2.getScore() === 15) {
       this.pause = true;
       this.score2.render(svg, "Player 2 Wins");
     } else {
@@ -83,10 +104,22 @@ export default class Game {
     this.gameElement.appendChild(svg);
     this.board.render(svg);
     this.paddle.render(svg);
+    if (this.paddle.getScore() >= 5) {
+      this.paddle3.render(svg, this.paddle, this.paddle2);
+    }
+
     this.paddle2.render(svg);
+    if (this.paddle2.getScore() >= 5) {
+      this.paddle4.render(svg, this.paddle, this.paddle2);
+    }
+
     this.ball.render(svg, this.paddle, this.paddle2);
     if (this.paddle.getScore() >= 5 || this.paddle2.getScore() >= 5) {
       this.ball2.render(svg, this.paddle, this.paddle2);
+    }
+    this.ball.render(svg, this.paddle, this.paddle2);
+    if (this.paddle.getScore() >= 10 || this.paddle2.getScore() >= 10) {
+      this.ball3.render(svg, this.paddle, this.paddle2);
     }
 
     this.scoreBoard(svg);

@@ -76,7 +76,7 @@ export default class Ball {
     let ball = document.createElementNS(SVG_NS, "circle");
     ball.setAttributeNS(null, "cx", this.x);
     ball.setAttributeNS(null, "cy", this.y);
-    ball.setAttributeNS(null, "fill", "white");
+    ball.setAttributeNS(null, "fill", "#00ffff");
     ball.setAttributeNS(null, "r", this.radius);
 
     svg.appendChild(ball);
