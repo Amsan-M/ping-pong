@@ -47,7 +47,7 @@ export default class Game {
     this.paddle3 = new Paddle(
       this.height,
       (this.paddleWidth),
-      (this.paddleHeight * 2),
+      this.paddleHeight * 2,
       this.boardGap,
       (this.height - this.paddleHeight) / 2,
       KEYS.p1up,
@@ -57,7 +57,7 @@ export default class Game {
     this.paddle4 = new Paddle(
       this.height,
       this.paddleWidth,
-      (this.paddleHeight * 2),
+      this.paddleHeight*2,
       this.width - this.boardGap - this.paddleWidth,
       (this.height - this.paddleHeight) / 2,
       KEYS.p2up,
@@ -66,7 +66,7 @@ export default class Game {
 
     this.ball = new Ball(RADIUS, this.width, this.height);
     this.ball2 = new Ball(RADIUS * 2, this.width, this.height);
-    this.ball3 = new Ball(RADIUS * 3, this.width, this.height);
+    this.ball3 = new Ball(RADIUS / 3, this.width, this.height);
 
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
     this.score2 = new Score(this.width / 2 + 25, 30, 30);
