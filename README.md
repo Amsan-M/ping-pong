@@ -1,10 +1,17 @@
 # Pong Game
 
 A basic pong game for Red Academy students, using:
+
  HTML
  SVG
  Javascript
  Webpack
+
+## Learning Objectives
+
+Experiment with Javascript Object Oriented Programming and Webpack
+
+
 
 ## Setup
 
