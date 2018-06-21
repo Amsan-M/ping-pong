@@ -76,15 +76,19 @@ export default class Game {
         this.pause = !this.pause;
       }
     });
-  }
+  } 
 
   scoreBoard(svg) {
     if (this.paddle.getScore() === 15) {
       this.pause = true;
-      this.score1.render(svg, "Player 1 Wins");
+      this.score1.render(svg, "Player 1 Wins, Press F5 to play again!");
+      this.reset();
+ 
     } else if (this.paddle2.getScore() === 15) {
       this.pause = true;
-      this.score2.render(svg, "Player 2 Wins");
+      this.score2.render(svg, "Player 2 Wins, Press F5 to play again!");
+      this.reset();
+
     } else {
       this.score1.render(svg, this.paddle.getScore());
       this.score2.render(svg, this.paddle2.getScore());

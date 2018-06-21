@@ -1,6 +1,10 @@
 # Pong Game
 
-A basic pong game using SVGs.
+A basic pong game for Red Academy students, using:
+ HTML
+ SVG
+ Javascript
+ Webpack
 
 ## Setup
 
